@@ -25,8 +25,15 @@
 
 
     <script type="text/javascript">
+      const Url = "https://www.google.com/recaptcha/api/siteverify";
       function callValidation() {
         console.log('reCaptcha response:', grecaptcha.getResponse());
+        const data = {secret: "6Ldm-b4UAAAAACCUVyOsClP5jXsNfGt_daA8Hadw", response: grecaptcha.getResponse()};
+        const optionalParams = {headers: {"content-type": "application/json; charset=UTF-8"}, body:data, method: "POST"};
+        fetch(Url, optionalParams)
+           .then(data=>{console.log(data.json())})
+           .then(res=>{console.log(res)})
+           .catch(err=>{console.log(err)})
         if(grecaptcha.getResponse().length == 0) {
           alert("Please click the reCaptcha checkbox")
           return false;
