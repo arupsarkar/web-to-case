@@ -20,7 +20,6 @@
     <script>
           var recaptchaResponse;
           var promiseCallback = function(response) {
-              recaptchaResponse = response;
               console.log('---> promiseCallback(): response ', response);
           };    
     </script>
@@ -29,8 +28,8 @@
 
     <script type="text/javascript">
       function callValidation() {
-        console.log('reCaptcha response:', recaptchaResponse);
-        if(recaptchaResponse.length == 0) {
+        console.log('reCaptcha response:', grecaptcha.getResponse());
+        if(grecaptcha.getResponse().length == 0) {
           alert("Please click the reCaptcha checkbox")
           return false;
         }else {
