@@ -28,10 +28,14 @@
       function callValidation() {
         console.log('reCaptcha response:', grecaptcha.getResponse());
         if(grecaptcha.getResponse().length == 0) {
-          alert("Please click the reCaptcha checkbox")
-          return false;
+          console.log('reCaptcha not clicked', grecaptcha.getResponse());
+          alert("Please click the reCaptcha checkbox");
+          document.getElementById("submit-btn").disabled = true;
+          //return false;
         }else {
-          return true;
+          console.log('reCaptcha clicked', grecaptcha.getResponse());          
+          document.getElementById("submit-btn").disabled = false;
+          //return true;
         }
       }      
     </script>    
@@ -114,7 +118,7 @@
           <div class="g-recaptcha" data-sitekey="6Ldm-b4UAAAAADbSDewcZB78KARzU__-fkeZOWLr"></div><br>          
           
           <!--<input type="submit" name="submit">-->
-          <button type="submit" name="Submit" class="btn btn-primary" onclick="callValidation()">Submit</button>    
+          <button id="submit-btn" type="submit" name="Submit" class="btn btn-primary" onclick="callValidation()">Submit</button>    
 
         </form>
 
