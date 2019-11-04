@@ -31,7 +31,8 @@
     </script>
 
     <script type="text/javascript">
-    function recaptcha_callback(){
+    function recaptcha_callback(response){
+      console.log('---> promiseCallback(): response ', response);
       document.getElementById("submit-btn").disabled = false;
     }
     </script>    
