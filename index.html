@@ -3,21 +3,18 @@
 <head>
   <!-- Required meta tags -->
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-
-
-
-
-  <a id="liveagent_button_online_5732E000000HlJo" href="javascript://Chat" style="display: none;" onclick="liveagent.startChat('5732E000000HlJo')"><!-- Online Chat Content --></a><div id="liveagent_button_offline_5732E000000HlJo" style="display: none;"><!-- Offline Chat Content --></div><script type="text/javascript">
-  if (!window._laq) { window._laq = []; }
-  window._laq.push(function(){liveagent.showWhenOnline('5732E000000HlJo', document.getElementById('liveagent_button_online_5732E000000HlJo'));
-    liveagent.showWhenOffline('5732E000000HlJo', document.getElementById('liveagent_button_offline_5732E000000HlJo'));
-  });</script>
-
-
-
 </head>
 
+
+
 <body>
+
+<h1> Dev Chat Bot Page</h1>
+<div id="current_date"></p>
+  <script>
+    document.getElementById("current_date").innerHTML = Date();
+  </script>
+</div>
 
 <style type='text/css'>
   .embeddedServiceHelpButton .helpButton .uiButton {
@@ -54,17 +51,17 @@
     embedded_svc.settings.entryFeature = 'LiveAgent';
 
     embedded_svc.init(
-            'https://vonnlighting.my.salesforce.com',
-            'https://vonn-chat.secure.force.com/liveAgentSetupFlow',
+            'https://vonnlighting--vonndev.my.salesforce.com',
+            'https://vonndev-vonn-chat.cs18.force.com/liveAgentSetupFlow',
             gslbBaseURL,
-            '00D2E000001FU4G',
-            'Chat_Agents',
+            '00D1100000C9cAF',
+            'Chats_Vonn_Shop_Agents',
             {
-              baseLiveAgentContentURL: 'https://c.la1-c2-ia2.salesforceliveagent.com/content',
+              baseLiveAgentContentURL: 'https://c.la1-c1cs-iad.salesforceliveagent.com/content',
               deploymentId: '5722E000000DYI5',
-              buttonId: '5732E000000HlJo',
-              baseLiveAgentURL: 'https://d.la1-c2-ia2.salesforceliveagent.com/chat',
-              eswLiveAgentDevName: 'Chat_Agents',
+              buttonId: '573110000004Efn',
+              baseLiveAgentURL: 'https://d.la1-c1cs-iad.salesforceliveagent.com/chat',
+              eswLiveAgentDevName: 'Chats_Vonn_Shop_Agents',
               isOfflineSupportEnabled: true
             }
     );
@@ -72,7 +69,7 @@
 
   if (!window.embedded_svc) {
     var s = document.createElement('script');
-    s.setAttribute('src', 'https://vonnlighting.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+    s.setAttribute('src', 'https://vonnlighting--vonndev.my.salesforce.com/embeddedservice/5.0/esw.min.js');
     s.onload = function() {
       initESW(null);
     };
@@ -82,6 +79,8 @@
   }
 </script>
 
+
 </body>
 
 </html>
+
