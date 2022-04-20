@@ -1,151 +1,87 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" HTTP-EQUIV="Content-type" content="width=device-width, initial-scale=1, shrink-to-fit=no, text/html; charset=UTF-8">
-
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>    
-    <script>
-      function timestamp() { 
-        var response = document.getElementById("g-recaptcha-response"); 
-        if (response == null || response.value.trim() == "") {
-          var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);
-          elems["ts"] = JSON.stringify(new Date().getTime());
-          document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); 
-        } 
-      } setInterval(timestamp, 500); 
-    </script>
-    <script type="text/javascript">
-      var onloadCallback = function() {
-        grecaptcha.render('html_element', {
-          'sitekey' : '6Ldm-b4UAAAAADbSDewcZB78KARzU__-fkeZOWLr',
-          'callback' : promiseCallback,
-        });
-      };      
-    </script>
-    <script>
-          var promiseCallback = function(response) {
-              console.log('---> promiseCallback(): response ', response);
-          };    
-    </script>
-
-    <script type="text/javascript">
-    function recaptcha_callback(response){
-      console.log('---> promiseCallback(): response ', response);
-      document.getElementById("submit-btn").disabled = false;
-    }
-    </script>    
-
-    <script type="text/javascript">
-      function callValidation() {
-        console.log('reCaptcha response:', grecaptcha.getResponse());
-        if(grecaptcha.getResponse().length == 0) {
-          console.log('reCaptcha not clicked', grecaptcha.getResponse());
-          alert("Please click the reCaptcha checkbox");
-          document.getElementById("submit-btn").disabled = true;
-          //return false;
-        }else {
-          console.log('reCaptcha clicked', grecaptcha.getResponse());          
-          document.getElementById("submit-btn").disabled = false;
-          //return true;
-        }
-      }      
-    </script>    
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-  </head>
-  <body>
+<head>
+  <!-- Required meta tags -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 
 
 
-    <div class="card border-primary mb-3" style="max-width: 100%;">
-      <div class="card-header">Contact Support</div>
-        <div class="card-body text-secondary">
 
-
-        <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">
-
-          <input type=hidden name='captcha_settings' value='{"keyname":"reCaptcha","fallback":"true","orgId":"00D2E000001FU4G","ts":""}'>
-          <input type=hidden name="orgid" value="00D2E000001FU4G">
-          <input type=hidden name="retURL" value="https://www.vonn.com/support/contact-us/">
+  <a id="liveagent_button_online_5732E000000HlJo" href="javascript://Chat" style="display: none;" onclick="liveagent.startChat('5732E000000HlJo')"><!-- Online Chat Content --></a><div id="liveagent_button_offline_5732E000000HlJo" style="display: none;"><!-- Offline Chat Content --></div><script type="text/javascript">
+  if (!window._laq) { window._laq = []; }
+  window._laq.push(function(){liveagent.showWhenOnline('5732E000000HlJo', document.getElementById('liveagent_button_online_5732E000000HlJo'));
+    liveagent.showWhenOffline('5732E000000HlJo', document.getElementById('liveagent_button_offline_5732E000000HlJo'));
+  });</script>
 
 
 
-          <div class="form-row">
-            <div class="form-group col-md-6 required">
-              <label for="type">Type</label>
-              <select  id="type" class="form-control" name="type" required="true">
-                <option value="">--None--</option>
-                <option value="Problem">Problem</option>
-                <option value="Feature Request">Feature Request</option>
-                <option value="Question">Question</option>
-                <option value="New Order">New Order</option>
-                <option value="Shipping">Shipping</option>
-                <option value="Payments and Invoicing">Payments and Invoicing</option>
-                <option value="Order Status">Order Status</option>
-                <option value="Sales Quote">Sales Quote</option>
-                <option value="Vendor Inquiry">Vendor Inquiry</option>
-                <option value="Part Request">Part Request</option>
-                <option value="Product Defect">Product Defect</option>
-              </select>
-              <small id="typeHelp" class="form-text text-muted text-danger">Required</small>
-            </div>
+</head>
 
-            <div class="form-group col-md-6 required">
-              <label for="name">Contact Name</label>
-              <input  id="name" class="form-control" aria-describedby="contactNameHelp" maxlength="80" name="name" size="20" type="text" placeholder="Enter your name" required="true"/>
-              <small id="nameHelp" class="form-text text-muted text-danger">Required</small>
-            </div>
+<body>
 
+<style type='text/css'>
+  .embeddedServiceHelpButton .helpButton .uiButton {
+    background-color: #005290;
+    font-family: "Arial", sans-serif;
+  }
+  .embeddedServiceHelpButton .helpButton .uiButton:focus {
+    outline: 1px solid #005290;
+  }
+</style>
 
-            <div class="form-group col-md-6">
-              <label for="phone">Phone</label>
-              <input  id="phone" class="form-control" aria-describedby="phoneHelp" maxlength="40" name="phone" size="20" type="text" placeholder="Enter phone"/>
-            </div>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript'>
+  var initESW = function(gslbBaseURL) {
+    embedded_svc.settings.displayHelpButton = true; //Or false
+    embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
+    //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+    //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
-            <div class="form-group col-md-6 required">
-              <label for="email">Email</label>
-              <input  id="email" class="form-control" aria-describedby="emailHelp" maxlength="80" name="email" size="20" type="text" placeholder="Enter email" required="true"/>
-              <small id="emailHelp" class="form-text text-muted text-danger">Required</small>
-            </div>
-                        
-          </div>
+    //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+    //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-          
-          <div class="form-group required">
-              <label for="subject">Subject</label>
-              <input  id="subject" class="form-control" maxlength="80" name="subject" size="20" type="text" placeholder="Enter Subject" required="true"/>
-              <small id="subjectHelp" class="form-text text-muted text-danger">Required</small>              
-          </div>
+    // Settings for Chat
+    //embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+    // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+    // Returns a valid button ID.
+    //};
+    //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+    //embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+    //embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
+    embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+    embedded_svc.settings.entryFeature = 'LiveAgent';
 
-          <div class="form-group">
-              <label for="description">Description</label>
-              <textarea class="form-control" name="description"></textarea>
-          </div>          
+    embedded_svc.init(
+            'https://vonnlighting.my.salesforce.com',
+            'https://vonn-chat.secure.force.com/liveAgentSetupFlow',
+            gslbBaseURL,
+            '00D2E000001FU4G',
+            'Chat_Agents',
+            {
+              baseLiveAgentContentURL: 'https://c.la1-c2-ia2.salesforceliveagent.com/content',
+              deploymentId: '5722E000000DYI5',
+              buttonId: '5732E000000HlJo',
+              baseLiveAgentURL: 'https://d.la1-c2-ia2.salesforceliveagent.com/chat',
+              eswLiveAgentDevName: 'Chat_Agents',
+              isOfflineSupportEnabled: true
+            }
+    );
+  };
 
-          <div class="g-recaptcha" data-sitekey="6Ldm-b4UAAAAADbSDewcZB78KARzU__-fkeZOWLr" data-callback="recaptcha_callback"></div><br>          
-          <div class="form-group">
-            <label for="message">NOTE: In order to submit the form, please click on the reCaptcha checkbox</label>
-          </div>
-          <!--<input type="submit" name="submit">-->
-          <button id="submit-btn" type="submit" name="Submit" class="btn btn-primary" disabled="true">Submit</button>    
+  if (!window.embedded_svc) {
+    var s = document.createElement('script');
+    s.setAttribute('src', 'https://vonnlighting.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+    s.onload = function() {
+      initESW(null);
+    };
+    document.body.appendChild(s);
+  } else {
+    initESW('https://service.force.com');
+  }
+</script>
 
-        </form>
+</body>
 
-
-      </div>
-    </div>
-
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
 </html>
